@@ -3,7 +3,7 @@ FROM linuxserver/baseimage.apache
 MAINTAINER Mark Burford <sparklyballs@gmail.com>
 
 # set install packages as variable
-ENV install_packages="git-core \
+ENV APTLIST="git-core \
 php5-apcu \
 php5-gd \
 php5-json \
@@ -13,7 +13,7 @@ php5-pgsql"
 # install packages
 RUN apt-get update && \
 apt-get install \
-$install_packages -qy && \
+$APTLIST -qy && \
 
 # cleanup 
 apt-get clean -y && \
