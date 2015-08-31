@@ -9,7 +9,7 @@ Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggreg
 ## Usage
 
 ```
-docker create --name=tt-rss -v /etc/localtime:/etc/localtime:ro -v <path to data>:/config -e PGID=<gid> -e PUID=<uid>  -p 80:80 -p 443:443 linuxserver/tt-rss
+docker create --name=tt-rss -v /etc/localtime:/etc/localtime:ro -v <path to data>:/config -e PGID=<gid> -e PUID=<uid> -e TZ=<timezone> -p 80:80 -p443:443 linuxserver/tt-rss
 ```
 
 **Parameters**
@@ -19,6 +19,7 @@ docker create --name=tt-rss -v /etc/localtime:/etc/localtime:ro -v <path to data
 * `-v /config` - where tt-rss should store it's config files
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
+* `-e TZ` for setting timezone information, eg Europe/London
 
 It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it tt-rss /bin/bash`.
 
