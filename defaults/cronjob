@@ -20,6 +20,6 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 # m h  dom mon dow   command
-*/15 * * * * /usr/bin/php /config/www/tt-rss/update.php --feeds --quiet
+0,15 * * * * /sbin/setuser abc /usr/bin/php /config/www/tt-rss/update.php --feeds --quiet
 
 

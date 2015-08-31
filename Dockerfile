@@ -20,9 +20,13 @@ apt-get clean -y && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # add some files 
+ADD cron/ /etc/cron.d/
 ADD defaults/ /defaults/
 ADD init/ /etc/my_init.d/
 RUN chmod -v +x /etc/service/*/run /etc/my_init.d/*.sh
+
+# cron permissions fix 
+RUN chmod 600 /etc/crontab
 
 # expose ports
 EXPOSE 80 443

@@ -7,4 +7,3 @@ cd /config/www/tt-rss
 /sbin/setuser abc git pull origin master
 fi
 
-crontab -u abc /defaults/cronjob
