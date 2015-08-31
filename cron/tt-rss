@@ -1,1 +1,1 @@
-*/15 * * * * /sbin/setuser/abc /usr/bin/php /config/www/tt-rss/update.php --feeds --quiet
+*/15 * * * * /sbin/setuser/abc /usr/bin/php /config/www/tt-rss/update.php --feeds
