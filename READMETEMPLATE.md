@@ -15,11 +15,11 @@ docker create --name=tt-rss -v /etc/localtime:/etc/localtime:ro -v <path to data
 **Parameters**
 
 * `-p 80` - webui port *see note below*
-* `-v /etc/localhost` for timesync - *optional*
+* `-v /etc/localhost` for timesync - *optional* *omit if using TZ variable*
 * `-v /config` - where tt-rss should store it's config files
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
-* `-e TZ` for setting timezone information, eg Europe/London
+* `-e TZ` for setting timezone information, eg Europe/London 
 
 It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it tt-rss /bin/bash`.
 
