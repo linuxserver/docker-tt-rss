@@ -3,12 +3,7 @@ FROM linuxserver/baseimage.apache
 MAINTAINER Sparklyballs <sparklyballs@linuxserver.io>
 
 # set install packages as variable
-ENV APTLIST="git-core \
-php5-apcu \
-php5-gd \
-php5-json \
-php5-mysql \
-php5-pgsql"
+ENV APTLIST="git-core php5-apcu php5-gd php5-json php5-mysqlnd php5-pgsql"
 
 # install packages
 RUN apt-get update && \
