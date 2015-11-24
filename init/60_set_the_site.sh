@@ -1,9 +1,10 @@
 #!/bin/bash
-if [ ! -f "/config/www/tt-rss/index.php" ]; then
-echo "fetching tt-rss files"
-/sbin/setuser abc git clone https://tt-rss.org/git/tt-rss.git /config/www/tt-rss
-else
+
+[[ ! -d /config/www/tt-rss/.git ]] && (echo "fetching tt-rss files, this may take a little while" && \
+git clone https://tt-rss.org/git/tt-rss.git /config/www/tt-rss)
+
 cd /config/www/tt-rss
-/sbin/setuser abc git pull origin master
-fi
+git pull origin master
+
+chown -R abc:abc /config/www
 
