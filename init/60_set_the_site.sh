@@ -7,6 +7,6 @@ git clone https://tt-rss.org/git/tt-rss.git /config/www/tt-rss && chown -R abc:a
 [ "$ADVANCED_DISABLEUPDATES" ] && exit 0
 
 cd /config/www/tt-rss
-git pull origin master
+git pull
 chown -R abc:abc /config/www
 
