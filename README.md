@@ -15,7 +15,7 @@ docker create --name=tt-rss -v /etc/localtime:/etc/localtime:ro -v <path to data
 **Parameters**
 
 * `-p 80` - webui port *see note below*
-* `-v /etc/localhost` for timesync - *optional* *omit if using TZ variable*
+* `-v /etc/localtime` for timesync - *optional* *omit if using TZ variable*
 * `-v /config` - where tt-rss should store it's config files
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
