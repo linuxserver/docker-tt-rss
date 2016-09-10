@@ -2,6 +2,9 @@ FROM linuxserver/baseimage.apache
 
 MAINTAINER Sparklyballs <sparklyballs@linuxserver.io>
 
+# copy sources.list
+COPY sources.list /etc/apt/
+
 # set install packages as variable
 ENV APTLIST="git-core php5-apcu php5-gd php5-json php5-mysqlnd php5-pgsql"
 
