@@ -11,7 +11,7 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 * [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
 # linuxserver/tt-rss
-[![](https://images.microbadger.com/badges/image/linuxserver/tt-rss.svg)](http://microbadger.com/images/linuxserver/tt-rss "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tt-rss.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tt-rss.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-tt-rss)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-tt-rss/)
+[![](https://images.microbadger.com/badges/version/linuxserver/tt-rss.svg)](https://microbadger.com/images/linuxserver/tt-rss "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/tt-rss.svg)](http://microbadger.com/images/linuxserver/tt-rss "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tt-rss.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tt-rss.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-tt-rss)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-tt-rss/)
 [hub]: https://hub.docker.com/r/linuxserver/tt-rss/
 
 [Tiny Tiny RSS][tt-rssurl] is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
@@ -63,13 +63,21 @@ A basic apache configuration file can be found in /config/apache/site-confs , ed
 
 The site files are in /config/www/tt-rss , you can find config files and themes folder there. Email and other settings are in the config.php file.
 
-## Updates
+## Info
 
-* Upgrade to the latest version simply `docker restart tt-rss`.
 * To monitor the logs of the container in realtime `docker logs -f tt-rss`.
+
+* container version number 
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' tt-rss`
+
+* image version number
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/tt-rss`
 
 
 ## Versions
 
++ **14-10-16:** Add version layer information.
 + **10.09.16:** Add layer badges to README. 
 + **31.08.15:** Initial Release.
