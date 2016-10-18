@@ -84,6 +84,6 @@ The site files are in /config/www/tt-rss , you can find config files and themes 
 
 ## Versions
 
-+ **14-10-16:** Add version layer information.
++ **14.10.16:** Add version layer information.
 + **10.09.16:** Add layer badges to README. 
 + **31.08.15:** Initial Release.
