@@ -6,7 +6,7 @@ git clone https://tt-rss.org/git/tt-rss.git /config/www/tt-rss && chown -R abc:a
 # opt out for autoupdates
 [ "$ADVANCED_DISABLEUPDATES" ] && exit 0
 
-cd /config/www/tt-rss
+cd /config/www/tt-rss || exit
 git pull
 chown -R abc:abc /config/www
 
