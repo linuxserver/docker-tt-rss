@@ -10,7 +10,7 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 COPY sources.list /etc/apt/
 
 # set install packages as variable
-ENV APTLIST="git-core php5-apcu php5-gd php5-json php5-mysqlnd php5-pgsql"
+ENV APTLIST="git-core php5-apcu php5-gd php5-json php5-mysqlnd php5-pgsql php5-mcrypt"
 
 # install packages
 RUN apt-get update && \
@@ -19,7 +19,10 @@ $APTLIST -qy && \
 
 # cleanup
 apt-get clean -y && \
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+
+#enable mcrypt
+php5enmod mcrypt
 
 # add some files
 ADD defaults/ /defaults/
