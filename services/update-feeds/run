@@ -1,2 +1,0 @@
-#!/bin/bash
-/sbin/setuser abc php /config/www/tt-rss/update_daemon2.php > /dev/null 2>&1

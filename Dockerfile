@@ -1,4 +1,4 @@
-FROM linuxserver/baseimage.apache
+FROM lsiobase/alpine.nginx:3.5
 MAINTAINER sparklyballs
 
 # set version label
@@ -6,32 +6,27 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
-# copy sources.list
-COPY sources.list /etc/apt/
-
-# set install packages as variable
-ENV APTLIST="git-core php5-apcu php5-gd php5-json php5-mysqlnd php5-pgsql php5-mcrypt"
-
 # install packages
-RUN apt-get update && \
-apt-get install \
-$APTLIST -qy && \
+RUN \
+ apk add --no-cache \
+	curl \
+	php7-apcu \
+	php7-curl \
+	php7-dom \
+	php7-gd \
+	php7-iconv \
+	php7-intl \
+	php7-json \
+	php7-mcrypt \
+	php7-mysqlnd \
+	php7-pdo_mysql \
+	php7-pdo_pgsql \
+	php7-pgsql \
+	tar
 
-# cleanup
-apt-get clean -y && \
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+# copy local files
+COPY root/ /
 
-#enable mcrypt
-php5enmod mcrypt
-
-# add some files
-ADD defaults/ /defaults/
-ADD init/ /etc/my_init.d/
-ADD services/ /etc/service/
-RUN chmod -v +x /etc/service/*/run /etc/my_init.d/*.sh
-
-# expose ports
+# ports and volumes
 EXPOSE 80 443
-
-# set volumes
 VOLUME /config

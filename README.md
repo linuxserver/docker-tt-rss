@@ -29,7 +29,7 @@ docker create \
 -v <path to data>:/config \
 -e PGID=<gid> -e PUID=<uid> \
 -e TZ=<timezone> \
--p 80:80 -p443:443 \
+-p 80:80 \
 linuxserver/tt-rss
 ```
 
@@ -65,7 +65,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 You must create a user and database for tt-rss to use in a mysql/mariadb or postgresql server. In the setup page for database, use the ip address rather than hostname...
 
-A basic apache configuration file can be found in /config/apache/site-confs , edit the file to enable ssl (port 443 by default), set servername etc.. Self-signed keys are generated the first time you run the container and can be found in /config/keys , if needed, you can replace them with your own.
+A basic nginx configuration file can be found in /config/nginx/site-confs , edit the file to enable ssl (port 443 by default), set servername etc.. Self-signed keys are generated the first time you run the container and can be found in /config/keys , if needed, you can replace them with your own.
 
 The site files are in /config/www/tt-rss , you can find config files and themes folder there. Email and other settings are in the config.php file.
 
@@ -84,6 +84,7 @@ The site files are in /config/www/tt-rss , you can find config files and themes 
 
 ## Versions
 
++ **23.02.17:** Rebase to alpine linux 3.5 and nginx.
 + **14.10.16:** Add version layer information.
 + **10.09.16:** Add layer badges to README. 
 + **31.08.15:** Initial Release.
