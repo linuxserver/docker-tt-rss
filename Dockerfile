@@ -24,7 +24,10 @@ RUN \
 	php7-pdo_pgsql \
 	php7-pgsql \
 	php7-posix \
-	tar
+	tar && \
+
+# link php7 to php, fix update daemon
+ ln -sf /usr/bin/php7 /usr/bin/php
 
 # copy local files
 COPY root/ /
