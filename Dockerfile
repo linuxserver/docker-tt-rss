@@ -23,6 +23,7 @@ RUN \
 	php7-pdo_mysql \
 	php7-pdo_pgsql \
 	php7-pgsql \
+	php7-posix \
 	tar
 
 # copy local files
