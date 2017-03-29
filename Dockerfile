@@ -10,6 +10,9 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 RUN \
  apk add --no-cache \
 	curl \
+	tar && \
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/community \
 	php7-apcu \
 	php7-curl \
 	php7-dom \
@@ -23,8 +26,7 @@ RUN \
 	php7-pdo_mysql \
 	php7-pdo_pgsql \
 	php7-pgsql \
-	php7-posix \
-	tar && \
+	php7-posix && \
 
 # link php7 to php, fix update daemon
  ln -sf /usr/bin/php7 /usr/bin/php
