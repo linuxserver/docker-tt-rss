@@ -12,6 +12,9 @@ RUN \
 	curl \
 	tar && \
  apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/main \
+	libwebp && \
+ apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/community \
 	php7-apcu \
 	php7-curl \
