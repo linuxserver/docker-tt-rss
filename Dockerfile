@@ -13,7 +13,8 @@ RUN \
 	tar && \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/main \
-	libwebp && \
+	libwebp \
+	icu-libs && \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/community \
 	php7-apcu \
