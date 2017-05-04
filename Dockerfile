@@ -25,6 +25,7 @@ RUN \
 	php7-intl \
 	php7-json \
 	php7-mcrypt \
+	php7-mysqli \
 	php7-mysqlnd \
 	php7-pcntl \
 	php7-pdo_mysql \
