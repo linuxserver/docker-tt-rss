@@ -1,13 +1,13 @@
-FROM lsiobase/alpine.nginx:3.6
-MAINTAINER sparklyballs
+FROM lsiobase/alpine.nginx:3.7
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="sparklyballs"
 
-# install packages
 RUN \
+ echo "**** install packages ****" && \
  apk add --no-cache \
 	curl \
 	php7-apcu \
@@ -26,8 +26,7 @@ RUN \
 	php7-pgsql \
 	php7-posix \
 	tar && \
-
-# link php7 to php, fix update daemon
+ echo "**** link php7 to php ****" && \
  ln -sf /usr/bin/php7 /usr/bin/php
 
 # copy local files
