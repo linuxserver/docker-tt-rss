@@ -67,7 +67,11 @@ You must create a user and database for tt-rss to use in a mysql/mariadb or post
 
 A basic nginx configuration file can be found in /config/nginx/site-confs , edit the file to enable ssl (port 443 by default), set servername etc.. Self-signed keys are generated the first time you run the container and can be found in /config/keys , if needed, you can replace them with your own.
 
-The site files are in /config/www/tt-rss , you can find config files and themes folder there. Email and other settings are in the config.php file.
+Some site files are available in /config/www/tt-rss :
+
+* config.php, to change Database, email and other settings
+* plugin.local, to inject your custom plugins
+* theme.local, to inject your custom themes
 
 ## Info
 

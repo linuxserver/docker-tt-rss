@@ -26,7 +26,12 @@ RUN \
 	php7-posix \
 	tar && \
  echo "**** link php7 to php ****" && \
- ln -sf /usr/bin/php7 /usr/bin/php
+ ln -sf /usr/bin/php7 /usr/bin/php && \
+ echo "**** download ttrss ****" && \
+ mkdir -p /var/www/html && \
+ curl -o /tmp/tt-rss.tar.gz -L https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz && \
+ tar xf /tmp/tt-rss.tar.gz -C /var/www/html/ --strip-components=1 && \
+ rm /tmp/tt-rss.tar.gz
 
 # copy local files
 COPY root/ /
