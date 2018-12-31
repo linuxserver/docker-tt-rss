@@ -50,6 +50,20 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it tt-rss /bin/bash`.
 
+### Configure TT-RSS
+
+You can also inject any variable found in config.php using environment variables.
+
+For example, to start with a pre-configured instance, you can use :
+
+* `-e DB_TYPE=pgsql`
+* `-e DB_HOST=localhost`
+* `-e DB_USER=fox`
+* `-e DB_NAME=fox`
+* `-e DB_PASS=XXXXXX`
+* `-e DB_PORT=5432`
+* `-e SELF_URL_PATH=http://example.org/tt-rss/`
+
 ### User / Group Identifiers
 
 Sometimes when using data volumes (`-v` flags) permissions issues can arise between the host OS and the container. We avoid this issue by allowing you to specify the user `PUID` and group `PGID`. Ensure the data volume directory on the host is owned by the same user you specify and it will "just work" ™.

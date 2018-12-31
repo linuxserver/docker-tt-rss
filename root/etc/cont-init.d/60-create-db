@@ -1,0 +1,67 @@
+#!/usr/bin/with-contenv php
+<?php
+
+// Based on https://git.tt-rss.org/fox/tt-rss/src/master/install/index.php
+// For the case $op == 'installschema'
+
+function pdo_connect($host, $user, $pass, $db, $type, $port = false) {
+
+    $db_port = $port ? ';port=' . $port : '';
+    $db_host = $host ? ';host=' . $host : '';
+
+    try {
+        $pdo = new PDO($type . ':dbname=' . $db . $db_host . $db_port,
+            $user,
+            $pass);
+
+        return $pdo;
+    } catch (Exception $e) {
+        echo "Unable to connect to database using specified parameters : " .  $e->getMessage() . PHP_EOL;
+        return null;
+    }
+}
+
+if (file_exists("/config/www/tt-rss/config.php")) {
+    echo "Loading config.php" . PHP_EOL;
+    require_once "/config/www/tt-rss/config.php";
+
+    $pdo = pdo_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_TYPE, DB_PORT);
+    if (!$pdo) {
+        exit(2);
+    }
+    echo "Connected to the database" . PHP_EOL;
+
+    $res = $pdo->query("SELECT true FROM ttrss_feeds");
+    if ($res && $res->fetch()) {
+        echo "Some tt-rss data already exists in this database, skipping database installation" . PHP_EOL;
+        exit(0);
+    }
+    echo "tt-rss data not found, initializing the database" . PHP_EOL;
+
+    $lines = explode(";", preg_replace("/[\r\n]/", "",
+        file_get_contents("/var/www/html/schema/ttrss_schema_".basename(DB_TYPE).".sql")));
+
+    $dbInitError = 0;
+    foreach ($lines as $line) {
+        if (strpos($line, "--") !== 0 && $line) {
+            $res = $pdo->query($line);
+
+            if (!$res) {
+                echo "Query: $line" . PHP_EOL;
+                echo "Error: " . implode(", ", $this->pdo->errorInfo()) . PHP_EOL;
+                $dbInitError++;
+            }
+        }
+    }
+
+    if($dbInitError == 0) {
+        echo "Database initialization completed." . PHP_EOL;
+        exit(0);
+    } else {
+        echo "Database initialization failed." . PHP_EOL;
+        exit(1);
+    }
+}
+else {
+    echo "config.php absent, please use the installer or manually edit /config/www/tt-rss/config.php to finish the installation" . PHP_EOL;
+}
