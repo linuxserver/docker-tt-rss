@@ -9,7 +9,7 @@ LABEL maintainer="sparklyballs"
 RUN \
  echo "**** install packages ****" && \
  apk add --no-cache \
-	curl \
+	git \
 	php7-apcu \
 	php7-curl \
 	php7-dom \
@@ -24,7 +24,7 @@ RUN \
 	php7-pdo_pgsql \
 	php7-pgsql \
 	php7-posix \
-	tar && \
+	php7-ldap && \
  echo "**** link php7 to php ****" && \
  ln -sf /usr/bin/php7 /usr/bin/php
 
