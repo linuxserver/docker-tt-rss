@@ -35,7 +35,7 @@ linuxserver/tt-rss
 
 ## Parameters
 
-`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
+`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side.
 For example with a port -p external:internal - what this shows is the port mapping from internal to external of the container.
 So -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080
 http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
@@ -46,7 +46,7 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 * `-v /config` - where tt-rss should store it's config files
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
-* `-e TZ` for setting timezone information, eg Europe/London 
+* `-e TZ` for setting timezone information, eg Europe/London
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it tt-rss /bin/bash`.
 
@@ -61,7 +61,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
     uid=1001(dockeruser) gid=1001(dockergroup) groups=1001(dockergroup)
 ```
 
-## Setting up the application 
+## Setting up the application
 
 You must create a user and database for tt-rss to use in a mysql/mariadb or postgresql server. In the setup page for database, use the ip address rather than hostname...
 
@@ -73,7 +73,7 @@ The site files are in /config/www/tt-rss , you can find config files and themes 
 
 * To monitor the logs of the container in realtime `docker logs -f tt-rss`.
 
-* container version number 
+* container version number
 
 `docker inspect -f '{{ index .Config.Labels "build_version" }}' tt-rss`
 
@@ -84,11 +84,12 @@ The site files are in /config/www/tt-rss , you can find config files and themes 
 
 ## Versions
 
++ **28.01.19:** Add pipeline logic and multi arch.
 + **21.08.18:** Rebase to alpine linux 3.8.
 + **08.01.18:** Rebase to alpine linux 3.7.
 + **19.07.17:** Use updated [repository](https://git.tt-rss.org/git/tt-rss) for initial install.
 + **25.05.17:** Rebase to alpine linux 3.6.
 + **23.02.17:** Rebase to alpine linux 3.5 and nginx.
 + **14.10.16:** Add version layer information.
-+ **10.09.16:** Add layer badges to README. 
++ **10.09.16:** Add layer badges to README.
 + **31.08.15:** Initial Release.
