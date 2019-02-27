@@ -9,7 +9,7 @@ LABEL maintainer="sparklyballs"
 
 RUN \
  echo "**** install packages ****" && \
- apk add --no-cache \
+ apk add --no-cache --upgrade \
 	curl \
 	git \
 	grep \
@@ -19,6 +19,7 @@ RUN \
 	php7-gd \
 	php7-iconv \
 	php7-intl \
+	php7-ldap \
 	php7-mcrypt \
 	php7-mysqli \
 	php7-mysqlnd \
@@ -28,7 +29,9 @@ RUN \
 	php7-pgsql \
 	php7-posix \
 	tar && \
- echo "**** set version tag ****" && \
+ echo "**** install software ****" && \
+ mkdir -p \
+	/var/www/html/ && \
  if [ -z ${TT_RSS_VERSION+x} ]; then \
  	TT_RSS_VERSION=$(git ls-remote --tags https://git.tt-rss.org/fox/tt-rss.git \
 	| sort -t '/' -k 3 -V \
@@ -36,9 +39,17 @@ RUN \
 	| awk '/./{line=$0} END{print line}' \
 	| awk -F / '{print $3}'); \
  fi && \
- echo ${TT_RSS_VERSION} > /version.txt && \
+ curl -o \
+	/tmp/ttrss.tar.gz -L \
+	"https://git.tt-rss.org/git/tt-rss/archive/${TT_RSS_VERSION}.tar.gz" && \
+ tar xf \
+ /tmp/ttrss.tar.gz -C \
+	/var/www/html/ --strip-components=1 && \
  echo "**** link php7 to php ****" && \
- ln -sf /usr/bin/php7 /usr/bin/php
+ ln -sf /usr/bin/php7 /usr/bin/php && \
+ echo "**** cleanup ****" && \
+ rm -rf \
+	/tmp/*
 
 # copy local files
 COPY root/ /

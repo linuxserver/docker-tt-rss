@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# if this is a clean container use the new nginx root
+[[ ! -d /config/www/tt-rss ]] && \
+	mv /defaults/default.incontainer /defaults/default && \
+	exit 0
+
+# permissions on legacy container install
+chown -R abc:abc \
+	/config

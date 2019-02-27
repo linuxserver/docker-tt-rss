@@ -26,7 +26,7 @@ param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where tt-rss should store it's config files." }
+  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where tt-rss should store it's config files and data." }
 param_usage_include_ports: true
 param_ports:
   - { external_port: "80", internal_port: "80", port_desc: "WebUI" }
@@ -44,14 +44,30 @@ optional_block_1: false
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  You must create a user and database for tt-rss to use in a mysql/mariadb or postgresql server. In the setup page for database, use the ip address rather than hostname...
+  You must create a user and database for tt-rss to use in a mysql/mariadb or postgresql server. A basic nginx configuration file can be found in /config/nginx/site-confs , edit the file to enable ssl (port 443 by default), set servername etc.. Self-signed keys are generated the first time you run the container and can be found in /config/keys , if needed, you can replace them with your own.
 
-  A basic nginx configuration file can be found in /config/nginx/site-confs , edit the file to enable ssl (port 443 by default), set servername etc.. Self-signed keys are generated the first time you run the container and can be found in /config/keys , if needed, you can replace them with your own.
+  After you run the initial setup for this application from the `/install/` web directory a config.php will be generated inside the container. To have access to this file in /config/config.php you will need to restart the container using:
+  ```
+  docker restart tt-rss
+  ```
+  
+  **The default username and password after initial configuration is admin/password**
 
-  The site files are in /config/www/tt-rss , you can find config files and themes folder there. Email and other settings are in the config.php file.
+  ## Power users
+  The container can configure itself using environment variables, the gaurd for this logic to run is if the variable `DB_TYPE` is set. The most common variables to set are a URL for the application and a database endpoint. IE:
+  * -e DB_TYPE=mysql
+  * -e DB_HOST=host
+  * -e DB_USER=user
+  * -e DB_NAME=name
+  * -e DB_PASS=password
+  * -e DB_PORT=3306
+  * -e SELF_URL_PATH=http://localhost/
+
+  Please note if you use this method you need to have an already initialized database endpoint. We do our best to ensure that anything in the config.php can be set via these environment variables. 
 
 # changelog
 changelogs:
+  - { date: "26.02.19:", desc: "Install app in container, add php-ldap, allow env vars to generate config, thanks Neraud and Fmstrat." }
   - { date: "22.02.19:", desc: "Rebasing to alpine 3.9." }
   - { date: "28.01.19:", desc: "Add pipeline logic and multi arch." }
   - { date: "21.08.18:", desc: "Rebase to alpine linux 3.8." }
