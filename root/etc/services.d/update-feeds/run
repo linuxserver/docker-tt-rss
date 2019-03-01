@@ -1,4 +1,9 @@
 #!/usr/bin/with-contenv bash
 
+[[ -d /config/www/tt-rss ]] && \
 	s6-setuidgid abc php7 \
 	/config/www/tt-rss/update_daemon2.php > /dev/null 2>&1
+
+[[ -d /var/www/html ]] && \
+        s6-setuidgid abc php7 \
+        /var/www/html/update_daemon2.php > /dev/null 2>&1
