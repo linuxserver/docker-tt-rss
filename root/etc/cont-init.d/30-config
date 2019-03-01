@@ -15,7 +15,7 @@ symlinks=( \
 )
 
 for i in "${symlinks[@]}"; do
-	[[ "$(basename "$i")" == "config.php" && -e /config/"$(basename "$i")" && ! -L "$i" ]] && \
+	[[ "$(basename "$i")" == "config.php" && ! -L "$i" ]] && \
 		ln -s /config/"$(basename "$i")" "$i"
 	[[ -e "$i" && ! -L "$i" && -e /config/"$(basename "$i")" ]] && \
 		rm -Rf "$i" && \
