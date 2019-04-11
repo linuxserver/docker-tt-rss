@@ -41,27 +41,27 @@ if [ "${DB_TYPE+x}" ]; then
 	[[ "${DB_PORT+x}" ]] && sed -i "s|\s*define('DB_PORT',.*|\tdefine('DB_PORT', '$DB_PORT');|g" /config/config.php
 	[[ "${MYSQL_CHARSET+x}" ]] && sed -i "s|\s*define('MYSQL_CHARSET',.*|\tdefine('MYSQL_CHARSET', '$MYSQL_CHARSET');|g" /config/config.php
 	[[ "${SELF_URL_PATH+x}" ]] && sed -i "s|\s*define('SELF_URL_PATH',.*|\tdefine('SELF_URL_PATH', '$SELF_URL_PATH');|g" /config/config.php
-	[[ "${SINGLE_USER_MODE+x}" ]] && sed -i "s|\s*define('SINGLE_USER_MODE',.*|\tdefine('SINGLE_USER_MODE', '$SINGLE_USER_MODE');|g" /config/config.php
-	[[ "${SIMPLE_UPDATE_MODE+x}" ]] && sed -i "s|\s*define('SIMPLE_UPDATE_MODE',.*|\tdefine('SIMPLE_UPDATE_MODE', '$SIMPLE_UPDATE_MODE');|g" /config/config.php
+	[[ "${SINGLE_USER_MODE+x}" ]] && sed -i "s|\s*define('SINGLE_USER_MODE',.*|\tdefine('SINGLE_USER_MODE', $SINGLE_USER_MODE);|g" /config/config.php
+	[[ "${SIMPLE_UPDATE_MODE+x}" ]] && sed -i "s|\s*define('SIMPLE_UPDATE_MODE',.*|\tdefine('SIMPLE_UPDATE_MODE', $SIMPLE_UPDATE_MODE);|g" /config/config.php
 	[[ "${PHP_EXECUTABLE+x}" ]] && sed -i "s|\s*define('PHP_EXECUTABLE',.*|\tdefine('PHP_EXECUTABLE', '$PHP_EXECUTABLE');|g" /config/config.php
 	[[ "${LOCK_DIRECTORY+x}" ]] && sed -i "s|\s*define('LOCK_DIRECTORY',.*|\tdefine('LOCK_DIRECTORY', '$LOCK_DIRECTORY');|g" /config/config.php
 	[[ "${CACHE_DIR+x}" ]] && sed -i "s|\s*define('CACHE_DIR',.*|\tdefine('CACHE_DIR', '$CACHE_DIR');|g" /config/config.php
 	[[ "${ICONS_DIR+x}" ]] && sed -i "s|\s*define('ICONS_DIR',.*|\tdefine('ICONS_DIR', '$ICONS_DIR');|g" /config/config.php
 	[[ "${ICONS_URL+x}" ]] && sed -i "s|\s*define('ICONS_URL',.*|\tdefine('ICONS_URL', '$ICONS_URL');|g" /config/config.php
-	[[ "${AUTH_AUTO_CREATE+x}" ]] && sed -i "s|\s*define('AUTH_AUTO_CREATE',.*|\tdefine('AUTH_AUTO_CREATE', '$AUTH_AUTO_CREATE');|g" /config/config.php
-	[[ "${AUTH_AUTO_LOGIN+x}" ]] && sed -i "s|\s*define('AUTH_AUTO_LOGIN',.*|\tdefine('AUTH_AUTO_LOGIN', '$AUTH_AUTO_LOGIN');|g" /config/config.php
+	[[ "${AUTH_AUTO_CREATE+x}" ]] && sed -i "s|\s*define('AUTH_AUTO_CREATE',.*|\tdefine('AUTH_AUTO_CREATE', $AUTH_AUTO_CREATE);|g" /config/config.php
+	[[ "${AUTH_AUTO_LOGIN+x}" ]] && sed -i "s|\s*define('AUTH_AUTO_LOGIN',.*|\tdefine('AUTH_AUTO_LOGIN', $AUTH_AUTO_LOGIN);|g" /config/config.php
 	[[ "${FORCE_ARTICLE_PURGE+x}" ]] && sed -i "s|\s*define('FORCE_ARTICLE_PURGE',.*|\tdefine('FORCE_ARTICLE_PURGE', '$FORCE_ARTICLE_PURGE');|g" /config/config.php
 	[[ "${SPHINX_SERVER+x}" ]] && sed -i "s|\s*define('SPHINX_SERVER',.*|\tdefine('SPHINX_SERVER', '$SPHINX_SERVER');|g" /config/config.php
 	[[ "${SPHINX_INDEX+x}" ]] && sed -i "s|\s*define('SPHINX_INDEX',.*|\tdefine('SPHINX_INDEX', '$SPHINX_INDEX');|g" /config/config.php
-	[[ "${ENABLE_REGISTRATION+x}" ]] && sed -i "s|\s*define('ENABLE_REGISTRATION',.*|\tdefine('ENABLE_REGISTRATION', '$ENABLE_REGISTRATION');|g" /config/config.php
+	[[ "${ENABLE_REGISTRATION+x}" ]] && sed -i "s|\s*define('ENABLE_REGISTRATION',.*|\tdefine('ENABLE_REGISTRATION', $ENABLE_REGISTRATION);|g" /config/config.php
 	[[ "${REG_NOTIFY_ADDRESS+x}" ]] && sed -i "s|\s*define('REG_NOTIFY_ADDRESS',.*|\tdefine('REG_NOTIFY_ADDRESS', '$REG_NOTIFY_ADDRESS');|g" /config/config.php
 	[[ "${REG_MAX_USERS+x}" ]] && sed -i "s|\s*define('REG_MAX_USERS',.*|\tdefine('REG_MAX_USERS', '$REG_MAX_USERS');|g" /config/config.php
 	[[ "${SESSION_COOKIE_LIFETIME+x}" ]] && sed -i "s|\s*define('SESSION_COOKIE_LIFETIME',.*|\tdefine('SESSION_COOKIE_LIFETIME', '$SESSION_COOKIE_LIFETIME');|g" /config/config.php
 	[[ "${SMTP_FROM_NAME+x}" ]] && sed -i "s|\s*define('SMTP_FROM_NAME',.*|\tdefine('SMTP_FROM_NAME', '$SMTP_FROM_NAME');|g" /config/config.php
 	[[ "${SMTP_FROM_ADDRESS+x}" ]] && sed -i "s|\s*define('SMTP_FROM_ADDRESS',.*|\tdefine('SMTP_FROM_ADDRESS', '$SMTP_FROM_ADDRESS');|g" /config/config.php
 	[[ "${DIGEST_SUBJECT+x}" ]] && sed -i "s|\s*define('DIGEST_SUBJECT',.*|\tdefine('DIGEST_SUBJECT', '$DIGEST_SUBJECT');|g" /config/config.php
-	[[ "${CHECK_FOR_UPDATES+x}" ]] && sed -i "s|\s*define('CHECK_FOR_UPDATES',.*|\tdefine('CHECK_FOR_UPDATES', '$CHECK_FOR_UPDATES');|g" /config/config.php
-	[[ "${ENABLE_GZIP_OUTPUT+x}" ]] && sed -i "s|\s*define('ENABLE_GZIP_OUTPUT',.*|\tdefine('ENABLE_GZIP_OUTPUT', '$ENABLE_GZIP_OUTPUT');|g" /config/config.php
+	[[ "${CHECK_FOR_UPDATES+x}" ]] && sed -i "s|\s*define('CHECK_FOR_UPDATES',.*|\tdefine('CHECK_FOR_UPDATES', $CHECK_FOR_UPDATES);|g" /config/config.php
+	[[ "${ENABLE_GZIP_OUTPUT+x}" ]] && sed -i "s|\s*define('ENABLE_GZIP_OUTPUT',.*|\tdefine('ENABLE_GZIP_OUTPUT', $ENABLE_GZIP_OUTPUT);|g" /config/config.php
 	[[ "${PLUGINS+x}" ]] && sed -i "s|\s*define('PLUGINS',.*|\tdefine('PLUGINS', '$PLUGINS');|g" /config/config.php
 	[[ "${LOG_DESTINATION+x}" ]] && sed -i "s|\s*define('LOG_DESTINATION',.*|\tdefine('LOG_DESTINATION', '$LOG_DESTINATION');|g" /config/config.php
 fi
