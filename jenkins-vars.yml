@@ -3,10 +3,10 @@
 # jenkins variables
 project_name: docker-tt-rss
 external_type: na
-custom_version_command: git ls-remote --tags https://git.tt-rss.org/fox/tt-rss.git | sort -t '/' -k 3 -V | grep -Ev '{}|-' | awk '/./{line=$0} END{print line}' | awk -F / '{print $3}'
-release_type: stable
-release_tag: latest
-ls_branch: master
+custom_version_command: git ls-remote https://git.tt-rss.org/fox/tt-rss.git HEAD | cut -c1-8
+release_type: prerelease
+release_tag: develop
+ls_branch: develop
 repo_vars:
   - BUILD_VERSION_ARG = 'TT_RSS_VERSION'
   - LS_USER = 'linuxserver'

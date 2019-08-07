@@ -33,11 +33,7 @@ RUN \
  mkdir -p \
 	/var/www/html/ && \
  if [ -z ${TT_RSS_VERSION+x} ]; then \
- 	TT_RSS_VERSION=$(git ls-remote --tags https://git.tt-rss.org/fox/tt-rss.git \
-	| sort -t '/' -k 3 -V \
-	| grep -Ev '{}|-' \
-	| awk '/./{line=$0} END{print line}' \
-	| awk -F / '{print $3}'); \
+ 	TT_RSS_VERSION=$(git ls-remote https://git.tt-rss.org/fox/tt-rss.git HEAD | cut -c1-8); \
  fi && \
  curl -o \
 	/tmp/ttrss.tar.gz -L \
