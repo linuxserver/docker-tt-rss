@@ -15,7 +15,10 @@ available_architectures:
   - { arch: "{{ arch_armhf }}", tag: "arm32v7-latest"}
 
 # development version
-development_versions: false
+development_versions: true
+development_versions_items:
+  - { tag: "latest", desc: "Stable Tiny Tiny RSS releases" }
+  - { tag: "develop", desc: "Develop Tiny Tiny RSS releases from HEAD of their master branch" }
 
 # container parameters
 common_param_env_vars_enabled: true
@@ -62,6 +65,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "06.08.19:", desc: "Add develop branch for edge releases." }
   - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
   - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
   - { date: "26.02.19:", desc: "Install app in container, add php-ldap, allow env vars to generate config, thanks Neraud and Fmstrat." }
