@@ -134,7 +134,7 @@ You must create a user and database for tt-rss to use in a mysql/mariadb or post
 **The default username and password after initial configuration is admin/password**
 
 ## Power users
-The container can configure itself using environment variables, the gaurd for this logic to run is if the variable `DB_TYPE` is set. The most common variables to set are a URL for the application and a database endpoint. IE:
+The container can configure itself using environment variables, the guard for this logic to run is if the variable `DB_TYPE` is set. The most common variables to set are a URL for the application and a database endpoint. IE:
 * -e DB_TYPE=mysql
 * -e DB_HOST=host
 * -e DB_USER=user
@@ -142,6 +142,10 @@ The container can configure itself using environment variables, the gaurd for th
 * -e DB_PASS=password
 * -e DB_PORT=3306
 * -e SELF_URL_PATH=http://localhost/
+
+DB_PASS and DB_USER also have _FILE variants which will read the contents of a file instead. _FILE variants are prioritised if present.
+* -e DB_USER_FILE=/path/to/userfile
+* -e DB_PASS_FILE=/path/to/passfile
 
 Please note if you use this method you need to have an already initialized database endpoint. We do our best to ensure that anything in the config.php can be set via these environment variables. 
 
