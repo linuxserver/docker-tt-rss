@@ -36,8 +36,10 @@ if [ "${DB_TYPE+x}" ]; then
 	[[ "${DB_TYPE+x}" ]] && sed -i "s|\s*define('DB_TYPE',.*|\tdefine('DB_TYPE', '$DB_TYPE');|g" /config/config.php
 	[[ "${DB_HOST+x}" ]] && sed -i "s|\s*define('DB_HOST',.*|\tdefine('DB_HOST', '$DB_HOST');|g" /config/config.php
 	[[ "${DB_USER+x}" ]] && sed -i "s|\s*define('DB_USER',.*|\tdefine('DB_USER', '$DB_USER');|g" /config/config.php
+  [[ "${DB_USER_FILE+x}" ]] && sed -i "s|\s*define('DB_USER',.*|\tdefine('DB_USER', '$(cat $DB_USER_FILE)');|g" /config/config.php
 	[[ "${DB_NAME+x}" ]] && sed -i "s|\s*define('DB_NAME',.*|\tdefine('DB_NAME', '$DB_NAME');|g" /config/config.php
 	[[ "${DB_PASS+x}" ]] && sed -i "s|\s*define('DB_PASS',.*|\tdefine('DB_PASS', '$DB_PASS');|g" /config/config.php
+ 	[[ "${DB_PASS_FILE+x}" ]] && sed -i "s|\s*define('DB_PASS',.*|\tdefine('DB_PASS', '$(cat $DB_PASS_FILE)');|g" /config/config.php
 	[[ "${DB_PORT+x}" ]] && sed -i "s|\s*define('DB_PORT',.*|\tdefine('DB_PORT', '$DB_PORT');|g" /config/config.php
 	[[ "${MYSQL_CHARSET+x}" ]] && sed -i "s|\s*define('MYSQL_CHARSET',.*|\tdefine('MYSQL_CHARSET', '$MYSQL_CHARSET');|g" /config/config.php
 	[[ "${SELF_URL_PATH+x}" ]] && sed -i "s|\s*define('SELF_URL_PATH',.*|\tdefine('SELF_URL_PATH', '$SELF_URL_PATH');|g" /config/config.php
