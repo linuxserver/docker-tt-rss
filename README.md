@@ -134,7 +134,7 @@ You must create a user and database for tt-rss to use in a mysql/mariadb or post
 **The default username and password after initial configuration is admin/password**
 
 ## Power users
-The container can configure itself using environment variables, the gaurd for this logic to run is if the variable `DB_TYPE` is set. The most common variables to set are a URL for the application and a database endpoint. IE:
+The container can configure itself using environment variables, the guard for this logic to run is if the variable `DB_TYPE` is set. The values accepted for `DB_TYPE` are `mysql` for MySQL/MariaDB or `pgsql` for PostgreSQL. The most common variables to set are a URL for the application and the database connection settings, i.e.:
 * -e DB_TYPE=mysql
 * -e DB_HOST=host
 * -e DB_USER=user
